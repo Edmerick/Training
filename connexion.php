@@ -15,6 +15,7 @@
 
         //create the array with the information of the form
         $item = array(
+            "id"=> time(),
             "nom"=> $nom,
             "prenom"=> $prenoms,
             "sexe"=> $sexe,
@@ -37,6 +38,7 @@ $file = fopen("contacts.json", "w+" );
 if (isset($file)) {
     fwrite($file, json_encode($newContact));
     echo 'Data saved succesfull';
+    header("Location: index.php");
 } 
 else {echo 'Data is not saved';
 }

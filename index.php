@@ -1,8 +1,7 @@
 
 <?php
-include_once("menus.html");
+include_once("header.php");
 ?>
-<div class="container">
 <form role="form" name="inscription" method="post" action="connexion.php">
     <hr class="my-2">
     <h3 class="text-danger">Enregistrement de Contact</h3>
@@ -37,7 +36,4 @@ include_once("menus.html");
     <!--input type="submit" class="btn btn-primary" id="valider" name ="valider"  placeholder="Valider"-->
     </div>
 </form>
-
-</div>
-</body>   
-</html>
+<?php require_once("footer.php");?>

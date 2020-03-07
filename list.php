@@ -2,7 +2,7 @@
 /**
  * Display contact entry file
  */
-include_once "menus.html";
+include_once "header.php";
 $letterGroups = array();
 $oldContact = file_get_contents("contacts.json"); //Get the information in already in contact.json
 $people = json_decode($oldContact, true);         //Decode the json format in object php format
@@ -19,12 +19,24 @@ echo'<div class="row justify-content-center">';
 
     // Display  the letter in capital
         echo '<li class="list-group-item active">' .ucfirst($key) .'</li>';
-        for ($i=0; $i < count($persons) ; $i++) { 
+        for ($i=0; $i < count($persons) ; $i++):
             $person = $persons[$i];
-            echo '<li class="list-group-item">'.$person["nom"].' '.$person["prenom"].'<img src="img/modify.jpg"></li>';  
-            //$position = array_search('nom', $person);
-            //print_r($persons[$position]);
-            }
+        ?>  
+            <!-- https://fontawesome.com/v4.7.0/cheatsheet/ -->
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-8">
+                        <?php echo $person["nom"]; ?>
+                    </div>
+                    <div class="col-4">
+                        <a href=""><i class="fa fa-edit"></i></a>
+                        <a href="view.php?id=<?php echo $person["id"]; ?>"><i class="fa fa-eye"></i></a>
+                        <a href=""><i class="fa fa-trash"></i></a>
+                    </div>
+                </div>
+            </li>  
+        <?php
+        endfor;
         echo "<br>";
 
     }
